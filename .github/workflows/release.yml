@@ -1,0 +1,68 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - master  # replace with your default branch if not 'master'
+    paths:
+      - 'ChromeExtension/manifest.json'  # replace with the path to your manifest.json file
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .pem file
+      run: |
+        echo "${{ secrets.PEM_KEY }}" > key.pem
+
+    - name: Extract version
+      id: extract_version
+      run: |
+        echo "::set-output name=version::$(jq -r .version ChromeExtension/manifest.json)"
+
+    # - name: Print content.js before
+    #   run: cat ChromeExtension/content.js
+
+    - name: Modify content.js
+      run: |
+        sed -i 's|  fetch("http://127.0.0.1/rewrite/", {|  fetch("https://linkedrite.pratikpathak.com/rewrite/", {|g' ChromeExtension/content.js
+        sed -i 's|<current version>|${{ steps.extract_version.outputs.version }}|g' ChromeExtension/content.js
+        sed -i 's|// checkForUpdates();|checkForUpdates();|g' ChromeExtension/content.js
+
+    # - name: Print content.js after
+    #   run: cat ChromeExtension/content.js
+
+    - name: Create zip
+      run: |
+        if [ -d "Linkedrite" ]; then
+          rm -rf Linkedrite
+        fi
+        mkdir Linkedrite
+        cp -r ChromeExtension/* Linkedrite
+        zip -r Linkedrite${{ steps.extract_version.outputs.version }}.zip Linkedrite
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT }}  # use the PAT instead of the GITHUB_TOKEN
+      with:
+        tag_name: release-${{ steps.extract_version.outputs.version }}  # use the version as the tag
+        release_name: Linkedrite ${{ steps.extract_version.outputs.version }}  # use the version as the release name
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      id: upload_release_asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT }}  # use the PAT instead of the GITHUB_TOKEN
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}  # from the step above
+        asset_path: ./Linkedrite${{ steps.extract_version.outputs.version }}.zip
+        asset_name: Linkedrite${{ steps.extract_version.outputs.version }}.zip
+        asset_content_type: application/zip

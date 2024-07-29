@@ -1,0 +1,281 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linkedrite - AI powered writer</title>
+    <link rel="icon" href="{% static './favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static './rewrite/style.css' %}" />
+    <meta name="description" content="Linkedrite - AI powered writer is your go-to LinkedIn Post Generator. Generate professional, engaging, and AI-optimized LinkedIn posts with ease.">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEBMJ3L39W"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GEBMJ3L39W');
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Linkedrite - LinkedIn AI Powered Writer",
+        "applicationCategory": "WebApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Easily generate engaging, SEO-friendly posts for Linkding with our online tool. Create content in seconds and boost your productivity.",
+        "features": "Generate posts quickly; Time Saving; Easy to use interface",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.5",
+          "reviewCount": "24"
+        },
+        "url": "https://linkedrite.pratikpathak.com/"
+      }
+      </script>
+  </head>
+  <body>
+    <div class="post-box">
+      <div class="header">
+        <img
+          src="{% static './rewrite/profile.png'%}"
+          alt="LinkedIn Post Generator Profile Picture"
+          class="profile-pic"
+        />
+        <span class="name">Linkedrite - AI Powered Writer</span>
+        <span class="privacy">Post to Anyone</span>
+      </div>
+      <div class="input-area">
+        <textarea
+          placeholder="What do you want to talk about?"
+          id="postInput"
+          name="postInput"
+        ></textarea>
+        <div class="actions">
+          <div class="actionButton">
+            <div class="checkbox-con">
+              <input id="emojiNeeded" type="checkbox" checked />😀
+            </div>
+            <!-- <button id="emoji-btn">😀</button> -->
+          </div>
+          <div class="actionButton">
+            <button
+              id="robot-btn"
+              onclick="window.open('https://github.com/zpratikpathak')"
+            >
+              &#128420;
+            </button>
+            <button id="undo-btn">Undo&nbsp;<img height="15px" width="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAyUlEQVR4nO3UMQ4BQRSA4b8n7iBcgmp3O+4jWrfAKYh2OQbbUdChEPoRiW1eJszY2RnF/Mmrv7zJ5EHsz5qEQlUoVIVCVShUfZkHUABzIPOFKs1sgE4IWAEXoG+Ljx3hV6BbdfNPNYAEWGjwtS0scdNGGjytgtu0FPDsF7jEbUoFXOCppoDvvuCWgG++YPnUO1/wSsBTH6ju+CR1fqZMs+lrclfIEDgYnswz0HYFnyzQHg47GqC5y03LBsBecyC279NY20eKxTDpCdOoqIxxt+JEAAAAAElFTkSuQmCC"></button>
+            <!-- <button id="post-btn" disabled>Post</button> -->
+            <button id="doc-btn" onclick="copyText()">
+              Copy&nbsp;
+              <span class="svgIcon"></span>
+              <svg
+                fill="black"
+                viewBox="0 0 384 512"
+                height="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M280 64h40c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128C0 92.7 28.7 64 64 64h40 9.6C121 27.5 153.3 0 192 0s71 27.5 78.4 64H280zM64 112c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320c8.8 0 16-7.2 16-16V128c0-8.8-7.2-16-16-16H304v24c0 13.3-10.7 24-24 24H192 104c-13.3 0-24-10.7-24-24V112H64zm128-8a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"
+                ></path>
+              </svg>
+            </button>
+            <button id="rewrite-btn" class="rewrite-btn" type="submit">
+              <span id="button-text">Rewrite with AI✨</span>
+              <div id="spinner" style="display: none"></div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    <div class="blog-content">
+      <div class="blog-header">
+        <h1>Linkedrite - AI powered writer : Your LinkedIn Post Generator 🚀</h1>
+        <p>Generate professional LinkedIn posts with AI 🤖</p>
+      </div>
+      
+      <section>
+        <p>
+          Want to increase your LinkedIn engagement? Linkedrite - AI powered writer , your LinkedIn Post Generator, can help you generate professional posts with the help of AI. Simply enter your initial post input, and let the AI rewrite it in a more professional and engaging manner. Enhance your LinkedIn presence with Linkedrite - AI powered writer  today! 🎉
+        </p>
+      </section>
+    
+      <section>
+        <h2>About the Project 📖</h2>
+        <p>
+          Linkedrite - AI powered writer  is a project aimed at helping LinkedIn users generate professional posts with the help of AI. It takes your initial post input and rewrites it in a more professional and engaging manner, enhancing your LinkedIn presence. It's your go-to LinkedIn Post Generator.
+        </p>
+      </section>
+    
+      <section>
+        <h2>What is LinkedIn? 🌐</h2>
+        <p>
+          LinkedIn is a professional networking platform that allows users to connect with other professionals, share updates, and build their personal brand. It is widely used by professionals across various industries to network, find job opportunities, and share insights.
+        </p>
+      </section>
+
+      <section>
+        <h2>Why You Should Write Posts on LinkedIn? 🖊️</h2>
+        <p>
+            Writing posts on LinkedIn can offer several benefits, including:
+            <ol>
+                <li>🚀 <strong>Boost Your Visibility:</strong> Regularly posting on LinkedIn can increase your visibility on the platform, helping you reach more people in your industry.</li>
+                <li>👥 <strong>Engage Your Network:</strong> Sharing updates, insights, and experiences can help you engage with your network and foster meaningful professional relationships.</li>
+                <li>📈 <strong>Establish Your Expertise:</strong> By sharing industry-related content, you can establish yourself as a thought leader in your field.</li>
+                <li>🎯 <strong>Attract Opportunities:</strong> Regularly posting on LinkedIn can attract job opportunities, partnerships, and collaborations.</li>
+                <li>⏰ <strong>Save Time with LinkedIn Post Generator:</strong> A LinkedIn Post Generator can help you create engaging, professional posts quickly and efficiently, saving you time and effort.</li>
+            </ol>
+        </p>
+    </section>
+    
+      <section>
+        <h2>Why Use Linkedrite - AI powered writer ? 🤔</h2>
+        <p>
+            Linkedrite - AI powered writer , your LinkedIn Post Generator, offers several benefits to users, including:
+            <ol>
+                <li>🤖 AI-Powered Content: Generate professional, engaging, and AI-optimized LinkedIn posts.</li>
+                <li>🚀 Enhance Your Online Presence: Improve your LinkedIn profile visibility and reach with high-quality content.</li>
+                <li>👥 Boost Engagement: Drive more likes, comments, and shares on your posts, improving your engagement rate.</li>
+                <li>⏰ Time-Saving: Save time on content creation and focus more on networking and building relationships.</li>
+                <li>📈 Consistent Posting: Maintain a consistent posting schedule, which is crucial for building an audience on LinkedIn.</li>
+            </ol>
+        </p>
+      </section>
+    
+      
+    
+      <section>
+        <h2>How It Works 🧠</h2>
+        <p>
+          Linkedrite - AI powered writer , your LinkedIn Post Generator, works by leveraging advanced AI algorithms to rewrite your LinkedIn posts. Here's a brief overview of how it works:
+          <ol>
+            <li>It uses GPT4 to analyse your post 📝</li>
+            <li>After analysing, it finds common mistakes and improves them ✅</li>
+            <li>It analyses your post to make it more interesting and engaging 🎉</li>
+            <!-- Add more steps as necessary -->
+          </ol>
+        </p>
+      </section>
+
+      <section>
+        <h2>How to Install Locally🛠️</h2>
+        <p>
+            You can install Linkedrite - AI powered writer , your LinkedIn Post Generator, by following these steps:
+            <ol>
+                <li>📚 <strong>Install via Poetry:</strong> Run the command <code>poetry run</code>. Make sure you have already installed Poetry. If not, run this command <code>pip install poetry</code><br>
+                  <div align="center"><strong>🔄 OR </strong></div><strong>Install via Requirements.txt:</strong> Run the command <code>pip install -r requirements.txt</code>.</li>
+                <li>🗂️ <strong>Setup .ENV file:</strong> Create a `.env` file in the root directory and add the following credentials:<br>
+                    <code>
+                        AZURE_OPENAI_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxx" <br>
+                        AZURE_API_ENDPOINT = "https://xxxxxxxx.openai.azure.com/" <br>
+                        API_VERSION = "2023-12-01-preview" <br>
+                        DEPLOYMENT_MODEL = "XXXXXXXXXXXXXXXXXXXX" <br>
+                    </code>
+                    <strong>Note:</strong> Not sure how to get these credentials? <a href="#">Click here</a> to find out.
+                </li>
+            </ol>
+        </p>
+    </section>
+    
+      <!-- Add more sections as necessary -->
+    </div>
+  </body>
+
+  <script>// Assuming adjustHeight and showToast are defined elsewhere
+
+    // Cache DOM elements
+    const postInput = document.getElementById("postInput");
+    const rewriteBtn = document.getElementById("rewrite-btn");
+    const spinner = document.getElementById("spinner");
+    const buttonText = document.getElementById("button-text");
+    const undoBtn = document.getElementById("undo-btn");
+    let originalInput = "";
+    
+    function writeText(text, placeholder = false, callback = null) {
+      let i = 0;
+      if (placeholder) {
+        postInput.value = ""; // Clear the input box
+      }
+      function type() {
+        const currentText = text.slice(0, i);
+        if (placeholder) {
+          postInput.placeholder = currentText;
+        } else {
+          postInput.value = currentText;
+          adjustHeight(); // Adjust the height after changing the value
+        }
+        i++;
+        if (i <= text.length) {
+          requestAnimationFrame(type);
+        } else {
+          console.log("writeText completed");
+          if (callback) callback();
+        }
+      }
+      requestAnimationFrame(type);
+    }
+    
+    function sendData() {
+      const emojiNeeded = document.getElementById("emojiNeeded").checked;
+      originalInput = postInput.value;
+    
+      const data = { postInput: originalInput, emojiNeeded, htagNeeded: true };
+    
+      if (originalInput.length < 10) {
+        writeText("Please write more to generate a professional response", true);
+        return;
+      }
+    
+      rewriteBtn.disabled = true;
+      spinner.style.display = "inline-block";
+      buttonText.style.display = "none";
+    
+      fetch("{% url 'rewrite' %}", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // "X-CSRFToken": "{{ csrf_token }}",
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => {
+        if (!response.ok) throw new Error(response.status === 429 ? "Too Many Requests" : "An error occurred");
+        return response.json();
+      })
+      .then(data => {
+        if (!data || !data.rewriteAI) {
+          showToast("An error occurred");
+          return;
+        }
+        writeText(data.rewriteAI, false, () => {
+          rewriteBtn.disabled = false;
+          spinner.style.display = "none";
+          buttonText.style.display = "inline-block";
+        });
+      })
+      .catch(error => {
+        console.error(error);
+        showToast(error.message);
+        rewriteBtn.disabled = false;
+        spinner.style.display = "none";
+        buttonText.style.display = "inline-block";
+      });
+    }
+    
+    undoBtn.addEventListener("click", () => {
+      postInput.value = originalInput;
+    });
+    
+    rewriteBtn.addEventListener("click", sendData);
+  </script>
+  <script src="{% static './rewrite/script.js'%}"></script>
+</html>
